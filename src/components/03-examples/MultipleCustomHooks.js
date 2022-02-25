@@ -14,7 +14,7 @@ const MultipleCustomHooks = () => {
 
   return (
     <div>
-      <h1>Custom Hooks!!!</h1>
+      {/* <h1>Custom Hooks!!!</h1> */}
       <h2>Breaking Bad Quotes</h2>
       <hr />
       {loading ? (
