@@ -12,8 +12,25 @@ const TodoApp = () => {
     },
   ];
 
-  const [todos] = useReducer(todoReducer, initialState);
+  const [todos, dispatch] = useReducer(todoReducer, initialState);
   console.log(todos);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newTodo = {
+      id: new Date().getTime(),
+      // desc: e.target.value,
+      desc: "Nueva tarea",
+      done: false,
+    };
+
+    const action = {
+      type: "add",
+      payload: newTodo,
+    };
+
+    dispatch(action);
+  };
 
   return (
     <div>
@@ -25,7 +42,7 @@ const TodoApp = () => {
             {todos.map((item, i) => (
               <li key={i} className="list-group-item">
                 <p className="text-center">
-                  {i + 1}. {item?.desc}
+                  {i + 1}. {item.desc}
                 </p>
                 <button className="btn btn-danger">Borrar</button>
               </li>
@@ -35,7 +52,7 @@ const TodoApp = () => {
         <div className="col-5">
           <h4>Agregar to do</h4>
           <hr />
-          <form action="">
+          <form onSubmit={handleSubmit}>
             <input
               type="text"
               name="description"
@@ -44,7 +61,10 @@ const TodoApp = () => {
               autoComplete="off"
               className="form-control"
             />
-            <button className="btn btn-outline-primary mt-1 btn-block">
+            <button
+              type="submit"
+              className="btn btn-outline-primary mt-1 btn-block"
+            >
               Agregar
             </button>
           </form>
