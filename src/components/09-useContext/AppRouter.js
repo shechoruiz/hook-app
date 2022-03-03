@@ -16,14 +16,16 @@ const AppRouter = () => {
   return (
     <Router>
       <NavBar />
-      <Routes>
-        <Route path="/" element={<HomeScreen />} />
-        <Route path="/about" element={<AboutScreen />} />
-        <Route path="/login" element={<LoginScreen />} />
-        {/* Forma 1 de evitar rutas erradas. Es como el default */}
-        {/* <Route element={<HomeScreen />} />   */}
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<HomeScreen />} />
+          <Route path="/about" element={<AboutScreen />} />
+          <Route path="/login" element={<LoginScreen />} />
+          {/* Forma 1 de evitar rutas erradas. Es como el default */}
+          {/* <Route element={<HomeScreen />} />   */}
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </div>
     </Router>
   );
 };
